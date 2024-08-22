@@ -1781,9 +1781,9 @@ server <- function(input,output,session) {
 
   observeEvent(input$postsel3,{
     req(d4())
-    if(length(intersect("matrisome",input$postsel3))<1){
+    if(length(intersect("Matrisome",input$postsel3))<1){
       showNotification(
-        "WARNING: Deselecting \"matrisome\" removes all interactions!",
+        "WARNING: Deselecting \"Matrisome\" removes all interactions!",
         type = "error")
     }
   }) #side notes for warning on filter out matrisome
@@ -1907,7 +1907,7 @@ server <- function(input,output,session) {
         # out <- out
         out <- distinct(merge(out,mlist,by.x="Gene1",by.y="gene",all.x=T))
         out <- distinct(merge(out,mlist,by.x="Gene2",by.y="gene",all.x=T))
-        out[is.na(out)] <- "Not matrisome"
+        out[is.na(out)] <- "Non.matrisome"
         names(out)[11:14] <- c("Matrisome.Division.Gene1","Matrisome.Category.Gene1","Matrisome.Division.Gene2","Matrisome.Category.Gene2")
         # out$Reliability.score <- as.numeric(out$Reliability.score)
         # out <- out[order(-out$Reliability.score),]
@@ -1918,7 +1918,7 @@ server <- function(input,output,session) {
         out$id <- NULL
         out <- distinct(merge(out,mlist,by.x="Gene1",by.y="gene",all.x=T))
         out <- distinct(merge(out,mlist,by.x="Gene2",by.y="gene",all.x=T))
-        out[is.na(out)] <- "Not matrisome"
+        out[is.na(out)] <- "Non.matrisome"
         names(out)[11:14] <- c("Matrisome.Division.Gene1","Matrisome.Category.Gene1","Matrisome.Division.Gene2","Matrisome.Category.Gene2")
 
       }
@@ -1937,7 +1937,7 @@ server <- function(input,output,session) {
       out <- out[,c(1:10,12,14)]
       out$Matrisome.Category.Gene1 <- as.character(out$Matrisome.Category.Gene1)
       out$Matrisome.Category.Gene2 <- as.character(out$Matrisome.Category.Gene2)
-      out$`Type of interaction` <- ifelse(out$`Type of interaction`=="cell-matrix","Cell-Matrisome","Matrisome-Matrisome")
+      out$`Type of interaction` <- ifelse(out$`Type of interaction`=="cell-matrix","Non.matrisome-Matrisome","Matrisome-Matrisome")
       names(out)[3] <- "Type of communication"
 
       output$tbl <- renderDT(DT::datatable(out, extensions = 'Buttons',
@@ -2039,7 +2039,8 @@ server <- function(input,output,session) {
                             data.frame(type="Cell-Matrisome",`Percentage of total interactions`=0))
           }
         }
-        d1$type <- factor(d1$type,levels=c("Cell-Matrisome","Matrisome-Matrisome"))
+        d1$type <- ifelse(d1$type%in%"Cell-Matrisome","Non.matrisome-Matrisome",d1$type)
+        d1$type <- factor(d1$type,levels=c("Non.matrisome-Matrisome","Matrisome-Matrisome"))
 
         pl <- ggplot(d1,aes(type,`Percentage of total communications`,fill=type)) +
           geom_bar(stat="Identity") +
@@ -2166,9 +2167,9 @@ server <- function(input,output,session) {
 
 
       out <- merge(out,mlist,by.x="Gene1",by.y="gene",all.x=T)
-      out$family[is.na(out$family)] <- "Not matrisome"
+      out$family[is.na(out$family)] <- "Non.matrisome"
       out <- merge(out,mlist,by.x="Gene2",by.y="gene",all.x=T)
-      out$family.y[is.na(out$family.y)] <- "Not matrisome"
+      out$family.y[is.na(out$family.y)] <- "Non.matrisome"
 
       df <- as.data.frame(table(out$family.x,out$family.y))
       df <- df[df$Freq>0,]
@@ -2182,7 +2183,7 @@ server <- function(input,output,session) {
                           "ECM-affiliated proteins",
                           "ECM regulators",
                           "Secreted factors",
-                          "Not matrisome")
+                          "Non.matrisome")
 
         colnames(tb) <- c("ECM glycoproteins",
                           "Collagens",
@@ -2190,7 +2191,7 @@ server <- function(input,output,session) {
                           "ECM-affiliated proteins",
                           "ECM regulators",
                           "Secreted factors",
-                          "Not matrisome")
+                          "Non.matrisome")
 
         for(i in 1:nrow(df)){
           if(tb[rownames(tb)%in%df$Var2[i],
@@ -2233,7 +2234,7 @@ server <- function(input,output,session) {
 
           names(df)[1:2] <- c("Gene1","Gene2")
 
-          df$pair <- paste0(df$Gene1,"-",df$Gene2)
+          df$Pair <- paste0(df$Gene1,"-",df$Gene2)
           names(df)[3] <- "Percentage of total communications"
           df <- distinct(merge(df,nd1,by.x="Gene1",by.y="V1",all.x=T))
           df$Gene1 <- factor(df$Gene1,
@@ -2243,7 +2244,7 @@ server <- function(input,output,session) {
                                         "ECM-affiliated proteins",
                                         "ECM regulators",
                                         "Secreted factors",
-                                        "Not matrisome")))
+                                        "Non.matrisome")))
           df$Gene2 <- factor(df$Gene2,
                              levels = c("ECM glycoproteins",
                                             "Collagens",
@@ -2251,8 +2252,8 @@ server <- function(input,output,session) {
                                             "ECM-affiliated proteins",
                                             "ECM regulators",
                                             "Secreted factors",
-                                            "Not matrisome"))
-          pl <- ggplot(df,aes(Gene2,Gene1,label=pair)) +
+                                            "Non.matrisome"))
+          pl <- ggplot(df,aes(Gene2,Gene1,label=Pair)) +
             geom_point(aes(size=`Percentage of total communications`,color=as.character(V2))) +
             scale_color_manual(breaks=df$V2,values=as.character(df$V2))
           #+
@@ -2272,7 +2273,7 @@ server <- function(input,output,session) {
                            plot.title = element_text(size = 20, face = "bold"))
           # pl <- pl + scale_fill_viridis_d(option = "inferno")
           pl <- pl + labs(fill = '') + ggtitle("Matrisome Pairs") + NoLegend()
-          return(ggplotly(pl,tooltip = c("pair","Percentage of total communications")))
+          return(ggplotly(pl,tooltip = c("Pair","Percentage of total communications")))
           # return(pl)
 
         }
@@ -2471,8 +2472,9 @@ server <- function(input,output,session) {
         }else{
           rr <- rr[rr$p.value<0.05,]
           rr$p.value <- paste0("p value = ",round(rr$p.value,4))
+          colnames(rr) <- str_to_title(colnames(rr))
 
-          gp <- ggplot(rr,aes(signature,populations,size=overlap,color=signature,text=p.value)) +
+          gp <- ggplot(rr,aes(Signature,Populations,size=Overlap,color=Signature,text=P.value)) +
             geom_point() +
             #scale_y_discrete(position = "right") +
             #geom_point(aes(alpha=alp),show.legend = FALSE) +
@@ -2489,7 +2491,7 @@ server <- function(input,output,session) {
                   legend.position = "none")
           gp <- gp + #labs(size = 'Overlap (all p<0.05)') +
             ggtitle("Matrisome-specific Signature Enrichment")
-          return(ggplotly(gp,tooltip = c("populations","color","overlap","p.value"))%>%
+          return(ggplotly(gp,tooltip = c("Populations","color","Overlap","P.value"))%>%
                    layout(
                      title = list(
                        x = 0.01
@@ -2560,9 +2562,9 @@ server <- function(input,output,session) {
         }else{
 
         va <- distinct(merge(va,l,by="V1"))
-        names(va) <- c("influencer","size","x","strength","influenced")
-        va <- distinct(merge(va,mlist,by.x="influencer",by.y="gene",all.x=T))
-        va$category[is.na(va$category)] <- "Not matrisome"
+        names(va) <- c("Influencer","size","x","Strength","Influenced")
+        va <- distinct(merge(va,mlist,by.x="Influencer",by.y="gene",all.x=T))
+        va$category[is.na(va$category)] <- "Non.matrisome"
         va$color <- ifelse(va$category%in%"Core matrisome","#002253",
                            ifelse(va$category%in%"Matrisome-associated","#DB3E18","grey80"))
         names(va)[6] <- "Influencer.Matrisome.Division"
@@ -2572,12 +2574,12 @@ server <- function(input,output,session) {
         va <- distinct(merge(va,df,by="x"))
         va$new.x <- as.factor(va$new.x)
 
-        gp <- ggplot(va,aes(new.x,influenced,color=color,
-                            label=influencer,
+        gp <- ggplot(va,aes(new.x,Influenced,color=color,
+                            label=Influencer,
                             # label=Influencer.Matrisome.Division
         )) +
-          geom_point(aes(size=strength)) +
-          scale_x_discrete(breaks = unique(va$new.x),labels = unique(va$influencer)) +
+          geom_point(aes(size=Strength)) +
+          scale_x_discrete(breaks = unique(va$new.x),labels = unique(va$Influencer)) +
           scale_y_discrete(guide = guide_axis(angle = 90)) +
           scale_color_manual(breaks = as.character(va$color), values = as.character(va$color)) +
           theme_bw() + xlab("Influencers") + ylab("Influenced") +
@@ -2594,7 +2596,7 @@ server <- function(input,output,session) {
           ggtitle("Normalized Influence")
 
 
-          return(ggplotly(gp,tooltip = c("influencer","influenced","strength"
+          return(ggplotly(gp,tooltip = c("Influencer","Influenced","Strength"
                                          # ,"Influencer.Matrisome.Division"
                                          ))%>%
                    layout(
@@ -2666,7 +2668,7 @@ server <- function(input,output,session) {
             output$tbl2 <- renderDT(data.frame(error.message="No interactions found with these parameters. Please check your selection!"))
           }else{
             va <- distinct(merge(va,l,by="V1"))
-            names(va) <- c("influencer","size","x","strength","influenced")
+            names(va) <- c("Influencer","size","x","strength","Influenced")
             va$strength <- round(va$strength,1)
             names(va)[4] <- "Strength"
 
@@ -3001,8 +3003,12 @@ server <- function(input,output,session) {
           # out <- out
           out <- distinct(merge(out,mlist,by.x="Gene1",by.y="gene",all.x=T))
           out <- distinct(merge(out,mlist,by.x="Gene2",by.y="gene",all.x=T))
-          out[is.na(out)] <- "Non-matrisome"
+          out[is.na(out)] <- "Non.matrisome"
           names(out)[11:14] <- c("Matrisome.Division.Gene1","Matrisome.Category.Gene1","Matrisome.Division.Gene2","Matrisome.Category.Gene2")
+          # out$Reliability.score <- as.numeric(out$Reliability.score)
+          # out <- out[order(-out$Reliability.score),]
+          # 
+          # out <- out[,c(3,2,6,1,9,10,5,8,4,7,11,13)]
 
         }else{
           out$cc <- NULL
@@ -3010,8 +3016,13 @@ server <- function(input,output,session) {
           # out <- out
           out <- distinct(merge(out,mlist,by.x="Gene1",by.y="gene",all.x=T))
           out <- distinct(merge(out,mlist,by.x="Gene2",by.y="gene",all.x=T))
-          out[is.na(out)] <- "Non-matrisome"
+          out[is.na(out)] <- "Non.matrisome"
           names(out)[11:14] <- c("Matrisome.Division.Gene1","Matrisome.Category.Gene1","Matrisome.Division.Gene2","Matrisome.Category.Gene2")
+          
+          # out$Reliability.score <- as.numeric(out$Reliability.score)
+          # out <- out[order(-out$Reliability.score),]
+          # 
+          # out <- out[,c(3,2,6,1,9,10,5,8,4,7,11,13)]
         }
 
         out$perc.expr.Population1 <- round(out$perc.expr.Population1*100,1)
@@ -3024,7 +3035,7 @@ server <- function(input,output,session) {
         # out <- out[,c(1:11,13)]
         
         out <- out[,c(3,2,6,1,9,10,5,8,4,7,12,11,14,13)]
-        out[,3] <- ifelse(out[,3]%in%"cell-matrix","Cell-Matrisome","Matrisome-Matrisome")
+        out[,3] <- ifelse(out[,3]%in%"cell-matrix","Non.matrisome-Matrisome","Matrisome-Matrisome")
         names(out)[3] <- "Type of communication"
         
         dd <- CCgenes2
