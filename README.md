@@ -13,7 +13,7 @@
 [![Badge](https://img.shields.io/badge/Release-v1.0-green)](https://github.com/Izzilab/matRicom/releases/tag/1.0)
 
 * Manuscript available at: [doi XXXX](https://doi.org/) (*preprint at bioRxiv*)
-* Our curated *Omnibus* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/omnibus/)
+* Our curated *MatricomDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/omnibus/)
 * Analysis data: [matRicom-analysisCode](https://github.com/Izzilab/matRicom-suppData)
 * Authors and maintainers: IzziLab (✉️ <valerio.izzi@oulu.fi>) and Naba Lab (✉️ <anaba@uic.edu>)
 * This work was supported by the following grants (green: Naba lab; blue: Izzi lab):
@@ -28,14 +28,14 @@ Single-cell RNAseq (scRNA-seq) enables the study of cell-cell communication with
 
 To overcome these limitations, here we present MatriCom, a tool available as both an online and an offline Shiny App to study Matrisome-Matrisome and Matrisome-Cell communication patterns in scRNA-seq data. 
 
-## Omnibus database
-MatriCom finds communicating pairs within single cell RNA Sequencing (scRNA-seq) data by scanning our curated *Omnibus* database ([available here](inst/webApp/www/omnibus.xlsx) as a spreadsheet file for use outside the app). Omnibus (Latin for *about everything*) was constructed by combining the following 7 databases: [MatrixDB](http://matrixdb.univ-lyon1.fr/) (core) & (IMEx), [Basement membraneBASE](https://bmbase.manchester.ac.uk/), [KEGG](https://www.genome.jp/kegg/), [STRING](https://string-db.org/) (physical subnetwork), [BioGRID](https://thebiogrid.org/) (multi-validated) and [OmniPath](https://omnipathdb.org/) (Figure 1). The combined resource was then manually curated to include only communication pairs that feature at least one matrisome component and to characterise each pair by its database source, type of interaction (matrisome-matrisome or matrisome-cell), localization of each partner (matrisome, extracellular (non-matrisome), surfaceome, intracellular), and the divisions and categories of the matrisome partners.  
+## MatricomDB database
+MatriCom finds communicating pairs within single cell RNA Sequencing (scRNA-seq) data by scanning our curated *MatricomDB* database ([available here](inst/webApp/www/omnibus.xlsx) as a spreadsheet file for use outside the app). MatricomDB was constructed by combining the following 7 databases: [MatrixDB](http://matrixdb.univ-lyon1.fr/) (core) & (IMEx), [Basement membraneBASE](https://bmbase.manchester.ac.uk/), [KEGG](https://www.genome.jp/kegg/), [STRING](https://string-db.org/) (physical subnetwork), [BioGRID](https://thebiogrid.org/) (multi-validated) and [OmniPath](https://omnipathdb.org/) (Figure 1). The combined resource was then manually curated to include only communication pairs that feature at least one matrisome component and to characterise each pair by its database source, type of interaction (matrisome-matrisome or matrisome-cell), localization of each partner (matrisome, extracellular (non-matrisome), surfaceome, intracellular), and the divisions and categories of the matrisome partners.  
 
 ![](inst/webApp/www/f1.png)  
-**Figure 1. Construction of the Omnibus Database.**
+**Figure 1. Construction of the MatricomDB Database.**
 
 ## Workflow
-The graphical user interface of MatriCom features a single input panel with three major sections: *Data Input*, *Query Parameters*, and *Filters* (Figure 2). With the help of Omnibus, we can identify matrisome-specific communication pairs between cell types in scRNA-seq data, as follows.
+The graphical user interface of MatriCom features a single input panel with three major sections: *Data Input*, *Query Parameters*, and *Filters* (Figure 2). With the help of MatricomDB, we can identify matrisome-specific communication pairs between cell types in scRNA-seq data, as follows.
 
 ### Data Input
 Users upload their scRNA-seq data, in one of the supported formats (Figure 2 A). The online version of MatriCom additionally provides the input option to select a sample from open access data, publicly-available online. Here, we offer analytical access to the entire [Tabula Sapiens](https://tabula-sapiens-portal.ds.czbiohub.org/) collection, the [Human Protein Atlas](https://www.proteinatlas.org/) (THPA) collection and an expanding set of data from the [Azimuth](https://azimuth.hubmapconsortium.org/) app collection. Where possible, THPA and Azimuth datasets are offered with both original and [Census](https://github.com/sjdlabgroup/Census) cell type labels (Figure 2 A, Sample annotation), to guarantee standardization with the cell type assignment in Tabula Sapiens.
@@ -49,7 +49,7 @@ Within this pool of genes, MatriCom finds communicating pairs across cell types 
 ### Filters
 A set of query inclusivity filters (filters for model maximization, exclusion list and homomeric interactions), as well as custom algorithms is then applied. This avoids reporting "impossible" partners (e.g., collagen subunits produced by different cells) and to further remove redundancies and ease interpretation. All these filters can be turned on and off by the user (Figure 2 C).
 
-* **Maximize model.** The Omnibus database was curated from multiple sources, therefore the analysis may return duplicate entries of the same interaction with different reliability scores. Selecting the **Maximize model** option will only return interactions with the highest reliability score in case of duplicates. This filter also excludes "reciprocal duplicates" (inverted entries), effectively removing one of the pairs in the situation where _GENE1_ ⮂ _GENE2_ between Population-A ⮂ Population-B and _GENE2_ ⮂ _GENE1_ between Population-B ⮂ Population-A occur in the results. By default, this filter is active.
+* **Maximize model.** The MatricomDB database was curated from multiple sources, therefore the analysis may return duplicate entries of the same interaction with different reliability scores. Selecting the **Maximize model** option will only return interactions with the highest reliability score in case of duplicates. This filter also excludes "reciprocal duplicates" (inverted entries), effectively removing one of the pairs in the situation where _GENE1_ ⮂ _GENE2_ between Population-A ⮂ Population-B and _GENE2_ ⮂ _GENE1_ between Population-B ⮂ Population-A occur in the results. By default, this filter is active.
 
 * **Use exclusion list.** Various multimeric matrisome proteins cannot be produced by the cooperation of multiple, different cell populations, e.g. collagen or laminin multimers must be assembled within a single cell prior to secretion to the extracellular space. Selecting the **Use exclusion list** option, any of these multimers resulting from heterocellular interactions are removed from ther results. By default, this filter is active.
 
