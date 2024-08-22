@@ -1,7 +1,7 @@
 # MatriCom: matrisome communication in single-cell RNA-seq data.
 
 * MatriCom features an intuitive graphical user interface implemented in R Shiny
-* MatriCom is available **ready-to-use** online at https://matrinet.shinyapps.io/newmatricom/
+* MatriCom is available **ready-to-use** online at https://matrinet.shinyapps.io/matricom/
 * For a local installation of MatriCom on your own computer, see [installation instructions](INSTALL.md)
 
 [![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/matricom/)
