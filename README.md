@@ -6,14 +6,14 @@
 
 [![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/matricom/)
 [![Badge](https://img.shields.io/badge/Manuscript-bioRxiv-red)](https://doi.org/XXX)
-[![Badge](https://img.shields.io/badge/Analysis-code-orange)]
+[![Badge](https://img.shields.io/badge/Analysis-code-orange)]()
 [![Badge](https://img.shields.io/badge/Omnibus-db-orange)](inst/webApp/www/omnibus/)
 [![Badge](https://img.shields.io/badge/Installation-info-green)](INSTALL.md)
 [![Badge](https://img.shields.io/badge/Release-v1.0-green)](https://github.com/Izzilab/matRicom/releases/tag/1.0)
 
 * Manuscript available at: [doi XXXX](https://doi.org/) (*preprint at bioRxiv*)
 * Our curated *MatricomDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/omnibus/)
-* Analysis data: [matRicom-analysisCode](https://github.com/Izzilab/matRicom-suppData)
+* Analysis data: [matRicom-analysisCode]()
 * Authors and maintainers: IzziLab (✉️ <valerio.izzi@oulu.fi>) and Naba Lab (✉️ <anaba@uic.edu>)
 * This work was supported by the following grants (green: Naba lab; blue: Izzi lab):
 
