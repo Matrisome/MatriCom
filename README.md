@@ -7,12 +7,12 @@
 [![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/matricom/)
 [![Badge](https://img.shields.io/badge/Manuscript-bioRxiv-red)](https://doi.org/XXX)
 [![Badge](https://img.shields.io/badge/Analysis-code-orange)]()
-[![Badge](https://img.shields.io/badge/Omnibus-db-orange)](inst/webApp/www/omnibus/)
+[![Badge](https://img.shields.io/badge/MatricomDB-database-orange)](inst/webApp/www/MatricomDB/)
 [![Badge](https://img.shields.io/badge/Installation-info-green)](INSTALL.md)
 [![Badge](https://img.shields.io/badge/Release-v1.0-green)](https://github.com/Izzilab/matRicom/releases/tag/1.0)
 
 * Manuscript available at: [doi XXXX](https://doi.org/) (*preprint at bioRxiv*)
-* Our curated *MatricomDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/omnibus/)
+* Our curated *MatricomDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/MatricomDB/)
 * Analysis data: [matRicom-analysisCode]()
 * Authors and maintainers: IzziLab (✉️ <valerio.izzi@oulu.fi>) and Naba Lab (✉️ <anaba@uic.edu>)
 * This work was supported by the following grants (green: Naba lab; blue: Izzi lab):
@@ -28,7 +28,7 @@ Single-cell RNAseq (scRNA-seq) enables the study of cell-cell communication with
 To overcome these limitations, here we present MatriCom, a tool available as both an online and an offline Shiny App to study Matrisome-Matrisome and Matrisome-Cell communication patterns in scRNA-seq data. 
 
 ## MatricomDB database
-MatriCom finds communicating pairs within single cell RNA Sequencing (scRNA-seq) data by scanning our curated *MatricomDB* database ([available here](inst/webApp/www/omnibus.xlsx) as a spreadsheet file for use outside the app). MatricomDB was constructed by combining the following 7 databases: [MatrixDB](http://matrixdb.univ-lyon1.fr/) (core) & (IMEx), [Basement membraneBASE](https://bmbase.manchester.ac.uk/), [KEGG](https://www.genome.jp/kegg/), [STRING](https://string-db.org/) (physical subnetwork), [BioGRID](https://thebiogrid.org/) (multi-validated) and [OmniPath](https://omnipathdb.org/) (Figure 1). The combined resource was then manually curated to include only communication pairs that feature at least one matrisome component and to characterise each pair by its database source, type of interaction (matrisome-matrisome or matrisome-cell), localization of each partner (matrisome, extracellular (non-matrisome), surfaceome, intracellular), and the divisions and categories of the matrisome partners.  
+MatriCom finds communicating pairs within single cell RNA Sequencing (scRNA-seq) data by scanning our curated *MatricomDB* database ([available here](inst/webApp/www/MatricomDB.xlsx) as a spreadsheet file for use outside the app). MatricomDB was constructed by combining the following 7 databases: [MatrixDB](http://matrixdb.univ-lyon1.fr/) (core) & (IMEx), [Basement membraneBASE](https://bmbase.manchester.ac.uk/), [KEGG](https://www.genome.jp/kegg/), [STRING](https://string-db.org/) (physical subnetwork), [BioGRID](https://thebiogrid.org/) (multi-validated) and [OmniPath](https://omnipathdb.org/) (Figure 1). The combined resource was then manually curated to include only communication pairs that feature at least one matrisome component and to characterise each pair by its database source, type of interaction (matrisome-matrisome or matrisome-cell), localization of each partner (matrisome, extracellular (non-matrisome), surfaceome, intracellular), and the divisions and categories of the matrisome partners.  
 
 ![](inst/webApp/www/f1.png)  
 **Figure 1. Construction of the MatricomDB Database.**
@@ -56,7 +56,7 @@ A set of query inclusivity filters (filters for model maximization, exclusion li
 
 Post-run filters for reliability, communication types and cellular compartments are also available.
 
-* **Filter by reliability score.** Used to rank the results. The databases that build up Omnibus are ranked based on their level of experimental validation into 3 reliability levels (Figure 2 C and column `relscore` in [omnibus.xlsx](inst/webApp/www/omnibus.xlsx)). Users can restrict results based on reliability levels (default is set at 3 for stringency).
+* **Filter by reliability score.** Used to rank the results. The databases that build up MatricomDB are ranked based on their level of experimental validation into 3 reliability levels (Figure 2 C and column `relscore` in [MatricomDB.xlsx](inst/webApp/www/MatricomDB/MatricomDB.xlsx)). Users can restrict results based on reliability levels (default is set at 3 for stringency).
   * **Level 3**: the best and most reliable interactions coming from databases that are fully dedicated to the matrisome and where all interactions have been experimentally validated: -- MatrixDB core and KEGG.
   * **Level 2**: reliable interactions by dedicated databases, not all the interactions here have been experimentally validated -- MatrixDB IMEx, basement membraneBASE
   * **Level 1**: less relibale interactions sourced by massive, generalistic interaction databases, such as STRING (only the physical subnetwork), BioGRID (only the multivalidated dataset), and OmniPath.
