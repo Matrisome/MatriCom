@@ -6,7 +6,7 @@
 
 [![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/matricom/)
 [![Badge](https://img.shields.io/badge/Manuscript-bioRxiv-red)](https://doi.org/XXX)
-[![Badge](https://img.shields.io/badge/Analysis-code-orange)](https://github.com/Izzilab/matRicom-suppData)
+[![Badge](https://img.shields.io/badge/Analysis-code-orange)]
 [![Badge](https://img.shields.io/badge/Omnibus-db-orange)](inst/webApp/www/omnibus/)
 [![Badge](https://img.shields.io/badge/Installation-info-green)](INSTALL.md)
 [![Badge](https://img.shields.io/badge/Release-v1.0-green)](https://github.com/Izzilab/matRicom/releases/tag/1.0)
