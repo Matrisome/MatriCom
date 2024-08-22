@@ -4,7 +4,7 @@
 * MatriCom is available **ready-to-use** online at https://matrinet.shinyapps.io/newmatricom/
 * For a local installation of MatriCom on your own computer, see [installation instructions](INSTALL.md)
 
-[![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/newmatricom/)
+[![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/matricom/)
 [![Badge](https://img.shields.io/badge/Manuscript-bioRxiv-red)](https://doi.org/XXX)
 [![Badge](https://img.shields.io/badge/Supplementary-data-red)](https://doi.org/XXX)
 [![Badge](https://img.shields.io/badge/Analysis-code-orange)](https://github.com/Izzilab/matRicom-suppData)
