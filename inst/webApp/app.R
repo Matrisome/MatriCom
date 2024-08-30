@@ -1648,7 +1648,7 @@ server <- function(input,output,session) {
     req(!is.null(d0()))
     req(value()!=0 | value2()!=56)
     # if(value()!=0 & value2()==56){
-      shinyjs::enable("mmod")
+      # shinyjs::enable("mmod")
       shinyjs::enable("minexp")
       shinyjs::enable("cellprop")
       shinyjs::enable("scbutton")
