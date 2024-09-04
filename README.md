@@ -13,7 +13,7 @@
 
 * Manuscript available at: [doi XXXX](https://doi.org/) (*preprint at bioRxiv*)
 * Our curated *MatricomDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/MatricomDB/)
-* Example analyses data: [MatriCom-analyses](https://github.com/Izzilab/MatriCom-analyses)
+* Example analyses, using open access data and a case study: [MatriCom-analyses](https://github.com/Izzilab/MatriCom-analyses)
 * Authors and maintainers: IzziLab (✉️ <valerio.izzi@oulu.fi>) and Naba Lab (✉️ <anaba@uic.edu>)
 * This work was supported by the following grants (green: Naba lab; blue: Izzi lab):
 
