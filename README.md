@@ -2,7 +2,7 @@
 
 * MatriCom features an intuitive graphical user interface implemented in R Shiny
 * MatriCom is available **ready-to-use** online at https://matrinet.shinyapps.io/matricom/
-* For a local installation of MatriCom on your own computer, see [installation instructions](INSTALL.md)
+* For a local installation of MatriCom on your own computer, see [INSTALL](INSTALL.md) instructions.
 
 [![Badge](https://img.shields.io/badge/MatriCom-@Shinyapps-blue)](https://matrinet.shinyapps.io/matricom/)
 [![Badge](https://img.shields.io/badge/Manuscript-bioRxiv-red)](https://doi.org/XXX)
