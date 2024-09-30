@@ -3,7 +3,7 @@
 * MatriCom features an intuitive graphical user interface implemented in R Shiny.
 * MatriCom is available and **ready-to-use** online at https://matrinet.shinyapps.io/matricom/
 * To locally install MatriCom on your own computer, see [INSTALL](INSTALL.md) instructions.
-* Our curated *MatriComDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/MatriComDB/).
+* Our curated *MatriComDB* database, an integral part of the MatriCom package, is also [available separately](inst/webApp/www/MatricomDB/).
 * To learn more, see [MatriCom-analyses](https://github.com/Izzilab/MatriCom-analyses), which include example analyses using open-access data and a case study.
 * If you use MatriCom in your publication, please cite our upcoming manuscript: [doi XXXX](https://doi.org/) (*preprint at bioRxiv*)
 
@@ -55,7 +55,7 @@ After analysis is complete, users can apply a set of query inclusivity filters, 
 * **Remove homomeric interactions.** Some matrisome multimers are the product of a single gene (e.g. *COL1A1*). Thus, scoring homocellular communication pairs such as these is effectively the same as validating the presence of a single gene in the population, very likely biasing the results. When the **Remove homomeric interactions** option is active, pairs that represent homocellular homomeric interactions as removed from the results. By default, this filter is active.
 
 Post-run filters for reliability, inter-population communication type, and cellular compartment are also available:
-* **Filter by reliability score.** The databases that comprise MatriComDB are ranked into 3 reliability levels based on their degree of experimental validation (Figure 2C; column `relscore` in [MatriComDB.xlsx](inst/webApp/www/MatriComDB/MatriComDB.xlsx)). Users can restrict results based on reliability level. For stringency, only entries with reliability score of 3 are reported by default.
+* **Filter by reliability score.** The databases that comprise MatriComDB are ranked into 3 reliability levels based on their degree of experimental validation (Figure 2C; column `relscore` in [MatriComDB.xlsx](inst/webApp/www/MatricomDB/MatriComDB.xlsx)). Users can restrict results based on reliability level. For stringency, only entries with reliability score of 3 are reported by default.
   * **Level 3**: Indicates the best and most reliable interactions coming from databases that are fully dedicated to the matrisome, or from matrisome-focused subsets, and where all interactions have been experimentally validated - MatrixDB (core) and KEGG (Focal adhesion, ECM-receptor interaction).
   * **Level 2**: Indicates reliable interactions from matrix-dedicated databases, but where all interactions may not have been experimentally validated - MatrixDB (IMEx extended) and basement membraneBASE
   * **Level 1**: Indicates less reliable interactions sourced from massive, generalist interaction databases - STRING (physical subnetwork), BioGRID (multi-validated), and OmniPath.
