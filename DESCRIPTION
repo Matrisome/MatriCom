@@ -1,10 +1,10 @@
 Package: MatriCom
-Title: MatriCom: scRNA-Seq data mining tool
+Title: MatriCom: inference of matrisome communication systems from scRNA-seq data
 Version: 1.0
 Authors@R: 
     person("Valerio", "Izzi", , "valerio.izzi@oulu.fi", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: A scRNA-Seq data mining tool to infer Matrisome and cell-Matrisome communication systems.
+Description: A tool to infer matrisome communication systems across tissues and compartments from scRNA-seq data
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
