@@ -35,7 +35,7 @@ MatriComDB was built by compiling the following seven datasets: [MatrixDB](http:
 ![](inst/webApp/www/f1.png)  
 **Figure 1. Construction of MatriComDB.**
 
-The databases that comprise MatriComDB were ranked into three reliability levels based on their degree of experimental validation:
+The databases that comprise MatriComDB were ranked into three reliability levels based on their degree of experimental validation. Using the following ranking system, each communication pair was assigned a **reliability score**. 
 * **Level 3**: Best and most reliable interactions from databases that are fully dedicated to the matrisome, or from matrisome-focused subsets, and where all interactions have been experimentally validated.
   * MatrixDB (core), KEGG (Focal adhesion, hsa04510; ECM-receptor interaction, hsa04512)
 * **Level 2**: Reliable interactions from matrisome-dedicated databases, but where all interactions may not have been experimentally validated.
@@ -43,10 +43,10 @@ The databases that comprise MatriComDB were ranked into three reliability levels
 * **Level 1**: Less reliable interactions sourced from massive, generalist databases.
   * STRING (physical subnetwork), BioGRID (multi-validated), OmniPath
 
-Using this ranking system, communication pairs in MatriComDB were assigned reliability scores based on their database source. Each pair was further characterized by the type of communication (*Non.matrisome-Matrisome* or *Matrisome-Matrisome*), division and category of matrisome partners ([The Matrisome Project](https://sites.google.com/uic.edu/matrisome/home)), and localization of gene products (*Matrisome*, *Surfaceome*, *Extracellular (Non-matrisome)*, or *Intracellular*). In cases where a protein occupies multiple cellular compartments, we implemented the following hierarchy: 
-* Matrisome > Surfaceome > Extracellular (Non-matrisome) > Intracellular
+Each pair was further characterized by the type of communication (*Non.matrisome-Matrisome* or *Matrisome-Matrisome*), division and category of matrisome partners, and localization of gene products (*Matrisome*, *Surfaceome*, *Extracellular (Non-matrisome)*, or *Intracellular*). In cases where a protein occupies multiple cellular compartments, we implemented the following hierarchy, such that genes encoding proteins that do not fall into one of three highest-ranked compartments are marked as intracellular:
+  * Matrisome > Surfaceome > Extracellular (Non-matrisome) > Intracellular
 
-Genes encoding proteins that do not fall into one of three highest-ranked compartments are marked as intracellular. Sources for cellular compartment annotations are [The Matrisome Project](https://sites.google.com/uic.edu/matrisome/home), [The _in silico_ human Surfaceome](https://doi.org/10.1073/pnas.1808790115), and [Gene Ontology GO:0005576 (extracellular region)](https://www.ebi.ac.uk/QuickGO/term/GO:0005576).
+Matrisome division and category annotations are from [The Matrisome Project](https://sites.google.com/uic.edu/matrisome/home). Sources for cellular compartment annotations are [The Matrisome Project](https://sites.google.com/uic.edu/matrisome/home), [The _in silico_ human Surfaceome](https://doi.org/10.1073/pnas.1808790115), and [Gene Ontology GO:0005576 (extracellular region)](https://www.ebi.ac.uk/QuickGO/term/GO:0005576).
 
 ## Workflow
 The graphical user interface of MatriCom features a single input panel with three sections: **Data Input**, **Query Parameters**, and **Filters** (Figure 2).
@@ -60,13 +60,13 @@ Using the *Browse* button, users may upload their own annotated scRNA-seq data i
 ### Query Parameters
 Upon successful upload of the annotated scRNA-seq dataset (*Option 1*), the **Select cell identity labels** dropdown menu (Figure 2B) automatically populates with a list of all column headers. Here, users must indicate which metadata column contains the set of cell identity labels to be used for sorting individual cells into populations (Figure 3A). For open-access datasets (*Option 2*), the `cell_type` column, containing either original or Census annotations, is selected by default.
 
-### User-selected thresholds
+**User-selected thresholds**  
 The MatriCom algorithm considers all genes from the input data that pass the user-adjustable thresholds for mean (x̄) gene expression and percentage of positive cells (Figure 2B). These threshold values represent the minimum x̄ expression level at which a gene must be present in any population (Figure 3B, *Expression threshold*) and the minimum proportion of cells per population that must express the gene at x̄ level (Figure 3B, *Population threshold*). Any gene that does not meet these criteria is excluded from analysis.
 
 **Identification of communication pairs**  
 Within this pool of genes, MatriCom identifies communicating pairs across cell populations, as well as among cells of the same type (Figure 3C), and reports these communications in graphical and tabular formats (Figure 4; see [Results Output](#results-output) for details).
 
-***INSERT NEW FIGURE 3 HERE***
+### INSERT NEW FIGURE 3 HERE
 
 ### Filters
 After analysis is complete, users can apply a set of query inclusivity filters, including options for model maximization, exclusion lists, and homomeric interactions, as well as custom algorithms to refine results based on specific properties of matrisome proteins (Figure 2C). This avoids reporting "impossible" partners (*e.g.*, collagen subunits produced by different cells) and further removes redundancies to ease interpretation. All these filters can be turned on and off by the user (Figure 2C).
