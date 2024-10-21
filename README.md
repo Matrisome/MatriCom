@@ -1,4 +1,4 @@
-# MatriCom: a tool to infer matrisome communications systems in single-cell RNA-seq data
+# MatriCom: a tool to infer matrisome communication systems in single-cell RNA-seq datasets
 
 * MatriCom features an intuitive graphical user interface implemented in R Shiny.
 * MatriCom is available and **ready-to-use** online at https://matrinet.shinyapps.io/matricom/
