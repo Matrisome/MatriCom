@@ -1,7 +1,5 @@
-# MatricomDB database
+# MatriComDB
 
-This is the MatricomDB database, converted to `xlsx` format for use outside of
-MatriCom. 
+Here, we present our curated database of matrisome interactions, **MatriComDB**, converted to `.xlsx` format for external use. 
 
-In MatriCom, it is found as `inst/extdata/lr2.RDS` or `extdata/lr2.RDS` if
-the package is already installed.
+If the MatriCom package is already installed, **MatriComDB** can be found as `inst/extdata/lr2.RDS` or `extdata/lr2.RDS`.

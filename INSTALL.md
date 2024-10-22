@@ -1,5 +1,5 @@
-## Local MatriCom installation
-The online MatriCom app has an upload limit of 1 GB, so it might not be suitable for more sizeable files. In this case, we suggest you to install MatriCom locally. Here is the list of all needed packages (MatriCom is last) and how to install them one by one if required:
+## Local MatriCom Installation
+The online MatriCom app has an upload limit of 1 GB, which may not be suitable for more sizeable files. In this case, we suggest installing MatriCom locally. Below is the list of all required packages (MatriCom is last) and how to install them one by one, if necessary:
 
 ```r
 # from CRAN:
