@@ -66,7 +66,7 @@ The MatriCom algorithm considers all genes from the input data that pass the use
 **Identification of communication pairs**  
 Within this pool of genes, MatriCom identifies communicating pairs across cell populations, as well as among cells of the same type (Figure 3C), and reports these communications in graphical and tabular formats (Figure 4; see [Results Output](#results-output) for details).
 
-### INSERT NEW FIGURE 3 HERE
+![](inst/webApp/www/f3.png)
 
 ### Filters
 After the analysis is complete, users can apply a set of query inclusivity filters, including options for model maximization, exclusion lists, and homomeric interactions, as well as custom algorithms to refine results based on specific properties of matrisome proteins (Figure 2C). This avoids reporting "impossible" partners (*e.g.*, collagen subunits produced by different cells) and further removes redundancies to ease interpretation. All these filters can be turned on and off by the user (Figure 2C).
@@ -87,7 +87,7 @@ MatriCom returns results both as interactive graphics and as dynamic tables, sor
 
 To demonstrate, we loaded *Adipose tissue* from *The Human Protein Atlas* collection and ran the analysis with default query parameters and filters (Figure 2). The results in the _COMMUNICATION NETWORK_ tab feature a cluster map of global communications (Figure 4A), a bar graph of the proportion of Non.matrisome-Matrisome vs Matrisome-Matrisome communication pairs (Figure 4B), a dot plot of gene pairs classified by matrisome category (Figure 4C), and a detailed communication network table (Figure 4D). Using network analysis algorthims, MatriCom identifies influencers and influenced genes in the network, which are featured in the _NETWORK INFLUENCERS_ tab (Figure 4E). Finally, the results from enrichment analysis using a set of matrisome-specific molecular signatures from [matrisome-MSigDB](https://sites.google.com/uic.edu/matrisome/resources/matrisome-msigdb), recently released by the Naba Lab, are shown in the _ENRICHMENT ANALYSIS_ tab (Figure 4F).
 
-![](inst/webApp/www/f3.png)
+![](inst/webApp/www/f4.png)
 **Figure 4. Example of MatriCom output.** A) Global Communication Cluster Map: bubble size is proportional to the number of communications established by the represented population pair. Hovering the cursor over a bubble reveals identities of the communicating populations. B) Communication Pairs: percentage of Non.matrisome-Matrisome vs Matrisome-Matrisome pairs. C) Matrisome Pairs: distribution of gene pairs by matrisome category, where dot size is proportional to the number of communications. D) Full list of communicating genes and populations, including reliability scores, displayed as a table. E) Normalized Influence: network influencers and influenced genes, color-coded by matrisome division of influencers. Bubble size is proportional to relationship strength. F) Matrisome-specific Signature Enrichment: Bubbles are color-coded by gene set, and size is proportional to signature overlap per population-pair (vertical axis).
 
 ## See Also
